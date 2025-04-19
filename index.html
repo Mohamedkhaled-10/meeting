@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>اجتماع بسيط</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    video {
+      width: 45%;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      margin: 10px;
+    }
+
+    .room-controls {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>غرفة اجتماعات بسيطة</h1>
+
+  <div class="room-controls">
+    <input type="text" id="roomInput" placeholder="ادخل رقم الغرفة">
+    <button onclick="joinRoom()">انضم</button>
+    <button onclick="createRoom()">انشئ غرفة جديدة</button>
+  </div>
+
+  <video id="localVideo" autoplay muted></video>
+  <video id="remoteVideo" autoplay></video>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
