@@ -84,3 +84,30 @@ socket.on("answer", (data) => {
 socket.on("candidate", (data) => {
   peerConnection.addIceCandidate(data.candidate);
 });
+
+// جزء الدردشة
+const chatBox = document.getElementById("chat-box");
+const chatInput = document.getElementById("chatInput");
+
+// إرسال الرسالة
+function sendMessage() {
+  const message = chatInput.value;
+  if (message.trim() !== "") {
+    socket.emit("chat-message", { roomId: room, message: message });
+    appendMessage("أنا: " + message);
+    chatInput.value = "";
+  }
+}
+
+// استقبال الرسائل
+socket.on("chat-message", (data) => {
+  appendMessage("شخص آخر: " + data.message);
+});
+
+// إضافة الرسالة إلى مربع الدردشة
+function appendMessage(msg) {
+  const p = document.createElement("p");
+  p.textContent = msg;
+  chatBox.appendChild(p);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}

@@ -53,16 +53,15 @@
       background-color: #45a049;
     }
 
-video {
-  width: 320px;
-  height: 240px;
-  background-color: #000;
-  border: 2px solid #fff;
-  border-radius: 10px;
-  object-fit: cover;
-  margin: 10px;
-}
-
+    video {
+      width: 320px;
+      height: 240px;
+      background-color: #000;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      object-fit: cover;
+      margin: 10px;
+    }
 
     .video-container {
       display: flex;
@@ -81,6 +80,35 @@ video {
         width: 90%;
       }
     }
+
+    #chat-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    #chat-box {
+      height: 200px;
+      overflow-y: auto;
+      background: #2c2c3e;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    #chatInput {
+      width: 80%;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    #sendButton {
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
@@ -96,6 +124,12 @@ video {
   <div class="video-container">
     <video id="localVideo" autoplay muted playsinline></video>
     <video id="remoteVideo" autoplay playsinline></video>
+  </div>
+
+  <div id="chat-container">
+    <div id="chat-box"></div>
+    <input type="text" id="chatInput" placeholder="اكتب رسالتك هنا">
+    <button id="sendButton" onclick="sendMessage()">ارسال</button>
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
